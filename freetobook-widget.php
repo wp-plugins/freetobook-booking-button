@@ -26,7 +26,7 @@ if (!class_exists("FreetobookWidget"))
 			$this->widget_style=get_option('ftb_widget_style');
 			$this->widget_button_url=get_option('ftb_widget_button_url');
 			$this->widget_button_id=get_option('ftb_widget_button_id');
-			
+			if (empty($this->widget_button_id)) $this->widget_button_id='11';
 			/* Widget settings. */
 			$widget_ops = array( 'classname' => 'FreetobookWidget', 
 								'description' => 'Add freetobook booking button to your wordpress site' );
@@ -147,15 +147,19 @@ if (!class_exists("FreetobookWidget"))
 				<table>
 				<tr>
 				';
-				$numberOfButtons=9;
-				for($i=1;$i<=$numberOfButtons;$i++)
+				$numberOfStyles=7;
+				$numberOfButtons=6;
+				for($i=1;$i<=$numberOfStyles;$i++)
 				{
-					$checked=($this->widget_button_id==$i)?' checked="checked" ':'';
-					$html.='<td style="text-align:center">
-								<img src="'.plugins_url().'/freetobook/stock_buttons/btn'.$i.'.jpg" alt=""><br>
-								<input type="radio" name="ftb-widget-button-id" value="'.$i.'" '.$checked.' >
+					for ($j=1;$j<=$numberOfButtons;$j++)
+					{
+					$checked=($this->widget_button_id==($i . $j))?' checked="checked" ':'';
+					$html.='<td style="text-align:center;padding:7px;">
+								<img src="'.plugins_url().'/freetobook/stock_buttons/style' . $i . '/btn'.$j.'.gif" alt=""><br>
+								<input type="radio" name="ftb-widget-button-id" value="'.$i.$j.'" '.$checked.' >
 							</td>';	
-					if ($i%3==0) $html.='</tr><tr>';
+					}
+					$html.='</tr><tr>';					
 				}
 				$html.='
 				</tr>
@@ -259,8 +263,11 @@ if (!class_exists("FreetobookWidget"))
 				break;
 				
 			case 'button':
+				$st=substr($this->widget_button_id,0,1);
+				$bt=substr($this->widget_button_id,1,1);
 			 	$html='<div id="f2b-widget" style="height:auto;">
-						<a href="'. $resultPage .'"><img src="'.plugins_url().'/freetobook/stock_buttons/btn'.$this->widget_button_id.'.jpg"></a>
+						<a href="'. $resultPage .'"><img src="' . plugins_url() . 
+									'/freetobook/stock_buttons/style' . $st .'/btn' . $bt . '.gif"></a>
 						
 						</div> ';
 				break;
