@@ -54,7 +54,7 @@ if (!class_exists("FreetobookWidget"))
 		 
 			if ($file == $this_plugin)
 			{
-				$settings_link = '<a href="options-general.php?page=freetobook/freetobook-widget.php">' . 
+				$settings_link = '<a href="options-general.php?page=freetobook-booking-button/freetobook-widget.php">' . 
 				                   __("Settings", "freetobook").'</a>';
 			 array_unshift($links, $settings_link);
 			}
@@ -120,7 +120,7 @@ if (!class_exists("FreetobookWidget"))
 			$html.='
 			<br />
 			<br />
-			<form method="post" action="options-general.php?page=freetobook/freetobook-widget.php">';
+			<form method="post" action="options-general.php?page=freetobook-booking-button/freetobook-widget.php">';
 	
 			if ( function_exists('wp_nonce_field') )
 				$html.=wp_nonce_field('freetobook_update','ftb_nonce',true,false);
@@ -155,7 +155,7 @@ if (!class_exists("FreetobookWidget"))
 					{
 					$checked=($this->widget_button_id==($i . $j))?' checked="checked" ':'';
 					$html.='<td style="text-align:center;padding:7px;">
-								<img src="'.plugins_url().'/freetobook/stock_buttons/style' . $i . '/btn'.$j.'.gif" alt=""><br>
+								<img src="'.plugins_url().'/freetobook-booking-button/stock_buttons/style' . $i . '/btn'.$j.'.gif" alt=""><br>
 								<input type="radio" name="ftb-widget-button-id" value="'.$i.$j.'" '.$checked.' >
 							</td>';	
 					}
@@ -226,7 +226,7 @@ if (!class_exists("FreetobookWidget"))
 			else
 			{
 			   wp_register_script('freetobook-js', 
-								plugins_url().'/freetobook/ftb_admin.js',
+								plugins_url().'/freetobook-booking-button/ftb_admin.js',
 								array(),
 							   '1.0' );
 			   wp_enqueue_script('freetobook-js');			
@@ -267,7 +267,7 @@ if (!class_exists("FreetobookWidget"))
 				$bt=substr($this->widget_button_id,1,1);
 			 	$html='<div id="f2b-widget" style="height:auto;">
 						<a href="'. $resultPage .'"><img src="' . plugins_url() . 
-									'/freetobook/stock_buttons/style' . $st .'/btn' . $bt . '.gif"></a>
+									'/freetobook-booking-button/stock_buttons/style' . $st .'/btn' . $bt . '.gif"></a>
 						
 						</div> ';
 				break;
