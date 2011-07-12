@@ -8,10 +8,15 @@ Stable tag: trunk
 Add the freetobook booking button to your wordpress blog.
 
 == Description ==
-Use this plugin to add booking functionality to your wordpress site. You can choose
-to have a booking form with dates or a simple booking button, both linked to your rates 
-and availability on freetobook.
+The freetobook plugin is ideal for accommodation providers looking to add online 
+booking functionality to their wordpress website. You can choose to have a booking form 
+where your customer enters dates or a simple “booking button”, both are linked to your 
+rates and availability which you can update on freetobook.
 
+
+To find out more and register for an account simply visit our website. 
+Please be aware that the freetobook plugin is only suitable for accommodation providers, 
+do not register if you are not an accommodation provider.  
 
 
 == Installation ==
