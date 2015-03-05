@@ -2,7 +2,7 @@
 Contributors: freetobook
 Tags: freetobook, booking system, online booking,pms, web booking, booking engine,booking button
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 4.1.1
 Stable tag: trunk
 
 Add the freetobook booking button to your wordpress blog.
@@ -30,6 +30,10 @@ How to manually install freetobook plugin
 
 
 == Changelog ==
+
+
+=1.0.2=
+* Added support for loading stylesheet and javascript over https
 
 =1.0.1=
 * Documentation fixes

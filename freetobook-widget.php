@@ -3,7 +3,7 @@
 Plugin Name: freetobook widget
 Plugin URI: http://www.freetobook.com/widget
 Description: Booking Widget for wordpress
-Version:  1.0
+Version:  1.0.3
 Author: freetobook.com
 Author URI: http://www.freetobook.com
 License: GPL v2
@@ -198,8 +198,10 @@ if (!class_exists("FreetobookWidget"))
 		 
 	   function add_widget_stylesheet() 
 	   {
+   			$protocol=(!empty($_SERVER['HTTPS']))?'https':'http';
+
             wp_register_style('myStyleSheets2', 
-						'http://www.freetobook.com/affiliates/dynamicWidget/styles/widget-css.php?'.$this->widget_key);
+						$protocol . '://www.freetobook.com/affiliates/dynamicWidget/styles/widget-css.php?'.$this->widget_key);
             wp_enqueue_style( 'myStyleSheets2');
 		
 	    }
@@ -213,10 +215,12 @@ if (!class_exists("FreetobookWidget"))
 		{
 			if ( !is_admin() ) 
 			{ 
-					// instruction to only load if it is not the admin area
-					// register your script location, dependencies and version
-				   wp_register_script('freetobook-js', 
-		       						'http://www.freetobook.com/affiliates/dynamicWidget/js/wordpress-widget-js.php?' . 
+				$protocol=(!empty($_SERVER['HTTPS']))?'https':'http';
+
+				// instruction to only load if it is not the admin area
+				// register your script location, dependencies and version
+				 wp_register_script('freetobook-js', 
+		       						$protocol . '://www.freetobook.com/affiliates/dynamicWidget/js/wordpress-widget-js.php?' . 
 									$this->widget_key,
 						       		array(),
 								   '1.0' );
@@ -225,6 +229,7 @@ if (!class_exists("FreetobookWidget"))
 			}
 			else
 			{
+			
 			   wp_register_script('freetobook-js', 
 								plugins_url().'/freetobook-booking-button/ftb_admin.js',
 								array(),
@@ -246,6 +251,8 @@ if (!class_exists("FreetobookWidget"))
 		 
 		 function get_widget_html()
 		 {
+   			$protocol=(!empty($_SERVER['HTTPS']))?'https':'http';
+
 			 $resultPage='http://www.freetobook.com/affiliates/reservation.php?'. $this->widget_key;
 			 
 			 if (empty($this->widget_key))
@@ -281,7 +288,7 @@ if (!class_exists("FreetobookWidget"))
 					 	<div class="cin-box">
 							<div id="f2b-calendar" style="margin-top:2px">
 								<img style="cursor: pointer;" alt="calendar icon"
-									 src="http://www.freetobook.com/affiliates/dynamicWidget/images/calendar.gif"
+									 src="' . $protocol . '://www.freetobook.com/affiliates/dynamicWidget/images/calendar.gif"
 								  	id="cp_opener_f2b_search_cal" width="16" border="0" height="15">
 							</div>
 							 <input value="dates" name="search_stage" type="hidden">
